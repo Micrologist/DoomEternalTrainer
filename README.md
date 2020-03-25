@@ -1,1 +1,1 @@
-Download latest release: https://github.com/Micrologist/DoomEternalTrainer/blob/master/bin/x64/Release/DoomTrainer.exe
+Download latest release: https://github.com/Micrologist/DoomEternalTrainer/raw/master/bin/x64/Release/DoomTrainer.exe
