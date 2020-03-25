@@ -89,6 +89,7 @@ namespace DoomTrainer
                 if (!WinAPI.GetModuleInformation(p.Handle, hModules[i], out moduleInfo, (uint)Marshal.SizeOf(moduleInfo)))
                     throw new Win32Exception();
 
+
                 ret.Add(new ProcessModuleWow64Safe()
                 {
                     FileName = fileName,
