@@ -1,18 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows;
 using System.Diagnostics;
-using System.Windows.Controls;
-using System.Windows.Data;
-using System.Windows.Documents;
-using System.Windows.Input;
-using System.Windows.Media;
-using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
-using System.Windows.Shapes;
 using System.Windows.Forms;
 
 namespace DoomTrainer
@@ -36,14 +26,18 @@ namespace DoomTrainer
 		IntPtr zVelPtr;
 		IntPtr xRotPtr;
 		IntPtr yRotPtr;
+		IntPtr xYawPtr;
+		IntPtr yYawPtr;
 		DeepPointer raxPointer = new DeepPointer("DOOMEternalx64vk.exe", 0x06121BB8, 0x38, 0x28, 0x0);
 		DeepPointer eaxPointer = new DeepPointer("DOOMEternalx64vk.exe", 0x04C7CA08, 0xCB0, 0xDF8, 0x1D0, 0x88);
 		DeepPointer xVelDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C7CA08, 0x1510, 0x598, 0x1D0,  0x3F40);
 		DeepPointer rotDP = new DeepPointer("DOOMEternalx64vk.exe", 0x4C83F38);
+		DeepPointer yawDP = new DeepPointer("DOOMEternalx64vk.exe", 0x61AC728);
 		float[] storedPos = new float[3] { 0f, 0f, 0f };
 		float[] storedVel = new float[3] { 0f, 0f, 0f };
-		float[] storedRot = new float[2] { 0f, 0f };
+		float[] storedRot = new float[4] { 0f, 0f, 0f, 0f };
 		Process process;
+
 
 		DeepPointer restrictedCommandsDPTR = new DeepPointer("DOOMEternalx64vk.exe", 0x442741);
 		DeepPointer restrictedKeyPressDPTR = new DeepPointer("DOOMEternalx64vk.exe", 0x44FCE7);
@@ -60,6 +54,7 @@ namespace DoomTrainer
 			hook.KeyUp += Hook_KeyUp;
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F5);
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F6);
+			hook.HookedKeys.Add(System.Windows.Forms.Keys.F8);
 
 			Timer timer = new Timer();
 			timer.Interval = (16); // 60 Hz
@@ -104,9 +99,6 @@ namespace DoomTrainer
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
 		}
 
-		public void Update(){
-			Debug.WriteLine("test");
-		}
 
 		private void Hook_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
@@ -127,16 +119,40 @@ namespace DoomTrainer
 					process.ReadValue<float>(zVelPtr, out storedVel[2]);
 					process.ReadValue<float>(xRotPtr, out storedRot[0]);
 					process.ReadValue<float>(yRotPtr, out storedRot[1]);
+					process.ReadValue<float>(xYawPtr, out storedRot[2]);
+					process.ReadValue<float>(yYawPtr, out storedRot[3]);
+
 				}
 
 				if (e.KeyCode == System.Windows.Forms.Keys.F6)
 				{
 					
-					process.WriteBytes(xLocPtr, BitConverter.GetBytes(storedPos[0]));
-					process.WriteBytes(yLocPtr, BitConverter.GetBytes(storedPos[1]));
-					process.WriteBytes(zLocPtr, BitConverter.GetBytes(storedPos[2]+ 1f));
-					process.WriteBytes(xRotPtr, BitConverter.GetBytes(storedRot[0]));
-					process.WriteBytes(yRotPtr, BitConverter.GetBytes(storedRot[1]));
+
+					float curxYaw;
+					float curxRot;
+					process.ReadValue<float>(xYawPtr, out curxYaw);
+					process.ReadValue<float>(xRotPtr, out curxRot);
+					float oldxYaw = storedRot[2];
+					float oldxRot = storedRot[0];
+					float xOffset = (oldxYaw - curxYaw) - (oldxRot - curxRot);
+
+					float curyYaw;
+					float curyRot;
+					process.ReadValue<float>(yYawPtr, out curyYaw);
+					process.ReadValue<float>(yRotPtr, out curyRot);
+					float oldyYaw = storedRot[3];
+					float oldyRot = storedRot[1];
+					float yOffset = ((oldyYaw+180) - (curyYaw+180)) - (oldyRot % 360 - curyRot % 360);
+					Console.WriteLine("Yoldyaw: " + oldyYaw.ToString());
+					Console.WriteLine("Ycuryaw: " + curyYaw.ToString());
+
+					Console.WriteLine("xoffset: " + xOffset.ToString());
+					Console.WriteLine("yoffset: " + yOffset.ToString());
+
+					process.WriteBytes(xRotPtr, BitConverter.GetBytes(storedRot[0] + xOffset));
+					//process.WriteBytes(yRotPtr, BitConverter.GetBytes(storedRot[1]));
+					process.WriteBytes(yRotPtr, BitConverter.GetBytes(storedRot[1] + yOffset));
+					//process.WriteBytes(yawPtr, BitConverter.GetBytes(storedRot[2]));
 
 					if (retainVel)
 					{
@@ -148,12 +164,29 @@ namespace DoomTrainer
 					}
 					else
 					{
-						process.WriteBytes(xVelPtr, BitConverter.GetBytes(0f));
-						process.WriteBytes(yVelPtr, BitConverter.GetBytes(0f));
+						process.WriteBytes(xVelPtr, BitConverter.GetBytes(0.01f));
+						process.WriteBytes(yVelPtr, BitConverter.GetBytes(0.01f));
 						process.WriteBytes(zVelPtr, BitConverter.GetBytes(1f));
+						//System.Threading.Thread.Sleep(100);
+						//process.WriteBytes(zVelPtr, BitConverter.GetBytes(0f));
+
 
 					}
+
+					process.WriteBytes(xLocPtr, BitConverter.GetBytes(storedPos[0]));
+					process.WriteBytes(yLocPtr, BitConverter.GetBytes(storedPos[1]));
+					//process.WriteBytes(zLocPtr, BitConverter.GetBytes(storedPos[2]+ 1f));
+					process.WriteBytes(zLocPtr, BitConverter.GetBytes(storedPos[2]));
 				}
+
+				if (e.KeyCode == System.Windows.Forms.Keys.F8){
+					Console.WriteLine("Position Pointer: " + xLocPtr.ToString("X16"));
+					Console.WriteLine("Velocity Pointer: " + xVelPtr.ToString("X16"));
+					Console.WriteLine("Camera Rotation Pointer: " + xRotPtr.ToString("X16"));
+					Console.WriteLine("Yaw Pointer: " + xYawPtr.ToString("X16"));
+
+				}
+
 			}
 			e.Handled = true;
 		}
@@ -197,7 +230,8 @@ namespace DoomTrainer
 			rotDP.DerefOffsets(process, out xRotPtr);
 			yRotPtr = xRotPtr + 4;
 
-
+			yawDP.DerefOffsets(process, out xYawPtr);
+			yYawPtr = xYawPtr + 4;
 
 
 			return true;
