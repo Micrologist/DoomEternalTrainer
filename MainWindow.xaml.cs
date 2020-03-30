@@ -4,6 +4,7 @@ using System.Linq;
 using System.Windows;
 using System.Diagnostics;
 using System.Windows.Forms;
+using System.Text;
 
 namespace DoomTrainer
 {
@@ -33,6 +34,12 @@ namespace DoomTrainer
 		DeepPointer xVelDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C7CA08, 0x1510, 0x598, 0x1D0,  0x3F40);
 		DeepPointer rotDP = new DeepPointer("DOOMEternalx64vk.exe", 0x4C83F38);
 		DeepPointer yawDP = new DeepPointer("DOOMEternalx64vk.exe", 0x61AC728);
+
+		//DeepPointer frameTimeDebugDP = new DeepPointer("DOOMEternalx64vk.exe", 0x25B4A88);
+		DeepPointer frameTimeDebugDP = new DeepPointer("DOOMEternalx64vk.exe", 0x25B4A80);
+
+		IntPtr frameTimeDebugPTR;
+
 		float[] storedPos = new float[3] { 0f, 0f, 0f };
 		float[] storedVel = new float[3] { 0f, 0f, 0f };
 		float[] storedRot = new float[4] { 0f, 0f, 0f, 0f };
@@ -97,6 +104,15 @@ namespace DoomTrainer
 
 			PosBlock.Text = "Current Position\nX: " + curX.ToString("0.00") + "\nY: " + curY.ToString("0.00") + "\nZ: " + curZ.ToString("0.00") + "\n\n\nStored Position\nX: " + storedPos[0].ToString("0.00") + "\nY: " + storedPos[1].ToString("0.00") + "\nZ: " + storedPos[2].ToString("0.00");
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
+
+			byte[] velocityArray = Encoding.ASCII.GetBytes("hvel: " + hVel.ToString("0.00") + "\n m/s | %i FPS");
+			byte[] outputArray = new byte[32];
+			for (int i = 0; i < velocityArray.Length; i++)
+			{
+				outputArray[i] = velocityArray[i];
+			}
+			process.VirtualProtect(frameTimeDebugPTR, 32, MemPageProtect.PAGE_EXECUTE_READWRITE);
+			process.WriteBytes(frameTimeDebugPTR, outputArray);
 		}
 
 
@@ -232,6 +248,8 @@ namespace DoomTrainer
 
 			yawDP.DerefOffsets(process, out xYawPtr);
 			yYawPtr = xYawPtr + 4;
+
+			frameTimeDebugDP.DerefOffsets(process, out frameTimeDebugPTR);
 
 
 			return true;
