@@ -105,7 +105,7 @@ namespace DoomTrainer
 			PosBlock.Text = "Current Position\nX: " + curX.ToString("0.00") + "\nY: " + curY.ToString("0.00") + "\nZ: " + curZ.ToString("0.00") + "\n\n\nStored Position\nX: " + storedPos[0].ToString("0.00") + "\nY: " + storedPos[1].ToString("0.00") + "\nZ: " + storedPos[2].ToString("0.00");
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
 
-			byte[] velocityArray = Encoding.ASCII.GetBytes("hvel: " + hVel.ToString("0.00") + "\n m/s | %i FPS");
+			byte[] velocityArray = Encoding.ASCII.GetBytes("hvel: " + hVel.ToString("0.00") + " m/s | %i FPS");
 			byte[] outputArray = new byte[32];
 			for (int i = 0; i < velocityArray.Length; i++)
 			{
