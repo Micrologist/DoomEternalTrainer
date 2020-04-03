@@ -20,11 +20,11 @@ C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.cspr
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csproj.CoreCompileInputs.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csproj.CopyComplete
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csprojAssemblyReference.cache
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.exe.config
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.pdb
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer_MarkupCompile.cache
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer_MarkupCompile.lref
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.g.resources
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomEternalTrainer.exe.config
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomEternalTrainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomEternalTrainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomEternalTrainer_MarkupCompile.cache
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomEternalTrainer_MarkupCompile.lref
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomEternalTrainer.g.resources
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomEternalTrainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomEternalTrainer.pdb

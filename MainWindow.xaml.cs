@@ -59,6 +59,10 @@ namespace DoomTrainer
 		float curXv;
 		float curYv;
 		float curZv;
+		float curXrot;
+		float curYrot;
+		float curXyaw;
+		float curYyaw;
 		double hVel;
 
 		float[] storedPos = new float[3] { 0f, 0f, 0f };
@@ -110,6 +114,11 @@ namespace DoomTrainer
 			process.ReadValue<float>(yVelPtr, out curYv);
 			process.ReadValue<float>(zVelPtr, out curZv);
 			hVel = Math.Sqrt(curXv * curXv + curYv * curYv);
+			process.ReadValue<float>(xRotPtr, out curXrot);
+			process.ReadValue<float>(yRotPtr, out curYrot);
+			process.ReadValue<float>(xYawPtr, out curXyaw);
+			process.ReadValue<float>(yYawPtr, out curYyaw);
+
 
 			PosBlock.Text = "Current Position\nX: " + curX.ToString("0.00") + "\nY: " + curY.ToString("0.00") + "\nZ: " + curZ.ToString("0.00") + "\n\n\nStored Position\nX: " + storedPos[0].ToString("0.00") + "\nY: " + storedPos[1].ToString("0.00") + "\nZ: " + storedPos[2].ToString("0.00");
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
@@ -271,6 +280,9 @@ namespace DoomTrainer
 
 			process.VirtualProtect(row5ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row5ptr, ToByteArray("", 34));
+
+			process.VirtualProtect(row8ptr, 1024, MemPageProtect.PAGE_READWRITE);
+			process.WriteBytes(row8ptr, ToByteArray("r: "+curXyaw.ToString("0.0") + " " + curYyaw.ToString("0.0"), 34));
 
 			process.VirtualProtect(row9ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row9ptr, ToByteArray("", 34));

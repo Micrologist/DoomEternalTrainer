@@ -23,7 +23,6 @@ C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.cs
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.exe.config
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.exe
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.pdb
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\Doom Eternal Trainer.exe
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\LiveSplit.Core.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\SpeedrunComSharp.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\IrcDotNet.dll
