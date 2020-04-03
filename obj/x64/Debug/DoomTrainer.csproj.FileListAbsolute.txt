@@ -1,10 +1,5 @@
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\MainWindow.g.cs
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\App.g.cs
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer_MarkupCompile.cache
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer_MarkupCompile.lref
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomTrainer.exe.config
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomTrainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\DoomTrainer.pdb
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\LiveSplit.Core.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\SpeedrunComSharp.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\IrcDotNet.dll
@@ -20,11 +15,16 @@ C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\ICSharpCode.Shar
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\LiveSplit.Core.dll.config
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Codaxy.Xlio.XmlSerializers.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\MainWindow.baml
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.g.resources
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.Properties.Resources.resources
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csproj.GenerateResource.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csproj.CoreCompileInputs.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csproj.CopyComplete
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.pdb
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\DoomTrainer.csprojAssemblyReference.cache
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.exe.config
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Debug\Doom Eternal Trainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer_MarkupCompile.cache
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer_MarkupCompile.lref
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.g.resources
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Debug\Doom Eternal Trainer.pdb

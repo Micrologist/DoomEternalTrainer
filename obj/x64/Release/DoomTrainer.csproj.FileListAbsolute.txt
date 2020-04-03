@@ -1,6 +1,3 @@
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\DoomTrainer.exe.config
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\DoomTrainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\DoomTrainer.pdb
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\LiveSplit.Core.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\SpeedrunComSharp.dll
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\IrcDotNet.dll
@@ -18,13 +15,34 @@ C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Codaxy.Xlio.Xm
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.csprojAssemblyReference.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\MainWindow.g.cs
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\App.g.cs
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer_MarkupCompile.cache
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer_MarkupCompile.lref
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\MainWindow.baml
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.g.resources
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.Properties.Resources.resources
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.csproj.GenerateResource.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.csproj.CoreCompileInputs.cache
 C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.csproj.CopyComplete
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.exe
-C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomTrainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.exe.config
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\bin\x64\Release\Doom Eternal Trainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\Doom Eternal Trainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\LiveSplit.Core.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\SpeedrunComSharp.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\IrcDotNet.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\LinqToTwitter.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\UpdateManager.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\CustomFontDialog.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\WinFormsColor.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\SharpDX.DirectInput.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\Codaxy.Xlio.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\IrcDotNet.Common.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\SharpDX.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\ICSharpCode.SharpZipLib.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\LiveSplit.Core.dll.config
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\Codaxy.Xlio.XmlSerializers.dll
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\DoomEternalTrainer.exe.config
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\DoomEternalTrainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\release\DoomEternalTrainer.pdb
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomEternalTrainer_MarkupCompile.cache
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomEternalTrainer_MarkupCompile.lref
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomEternalTrainer.g.resources
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomEternalTrainer.exe
+C:\Users\ATX\source\repos\DoomTrainer\DoomTrainer\obj\x64\Release\DoomEternalTrainer.pdb

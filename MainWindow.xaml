@@ -11,7 +11,7 @@
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
 		<TextBlock x:Name="PosBlock" HorizontalAlignment="Left" Height="206" Margin="10,12,0,0" TextWrapping="Wrap" Text="PosBlock" VerticalAlignment="Top" Width="119"/>
-		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="258,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click" IsEnabled="False"/>
+		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="258,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click"/>
 		<TextBlock x:Name="VelBlock" HorizontalAlignment="Left" Height="206" Margin="134,12,0,0" TextWrapping="Wrap" Text="VelBlock" VerticalAlignment="Top" Width="119"/>
 		<Label Content="Velocity Behavior" HorizontalAlignment="Left" Height="28" Margin="253,83,0,0" VerticalAlignment="Top" Width="169"/>
 		<CheckBox x:Name="zeroRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="258,111,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" IsChecked="True" Checked="zeroRB_Checked"/>
