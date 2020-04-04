@@ -32,6 +32,7 @@ namespace DoomTrainer
 		DeepPointer row7DP;
 		DeepPointer row8DP;
 		DeepPointer row9DP;
+		DeepPointer perfMetrOptionDP;
 
 		IntPtr xLocPtr;
 		IntPtr yLocPtr;
@@ -52,6 +53,7 @@ namespace DoomTrainer
 		IntPtr row7ptr;
 		IntPtr row8ptr;
 		IntPtr row9ptr;
+		IntPtr perfMetrOptionPtr;
 
 		float curX;
 		float curY;
@@ -70,6 +72,7 @@ namespace DoomTrainer
 		float[] storedRot = new float[4] { 0f, 0f, 0f, 0f };
 
 		bool retainVel;
+		bool enableShowpos = true;
 
 
 		public MainWindow()
@@ -123,7 +126,19 @@ namespace DoomTrainer
 			PosBlock.Text = "Current Position\nX: " + curX.ToString("0.00") + "\nY: " + curY.ToString("0.00") + "\nZ: " + curZ.ToString("0.00") + "\n\n\nStored Position\nX: " + storedPos[0].ToString("0.00") + "\nY: " + storedPos[1].ToString("0.00") + "\nZ: " + storedPos[2].ToString("0.00");
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
 
-			ShowPos();
+			enableShowpos = (showposCB.IsChecked ?? false);
+			if (enableShowpos)
+			{
+				process.WriteBytes(perfMetrOptionPtr, new byte[1] { 2 });
+				ShowPos();
+			}
+			else
+			{
+				process.WriteBytes(perfMetrOptionPtr, new byte[1] { 1 });
+				process.VirtualProtect(row1ptr, 1024, MemPageProtect.PAGE_READWRITE);
+				process.WriteBytes(row1ptr, ToByteArray("%i FPS (T)", 30));
+			}
+
 		}
 
 
@@ -342,6 +357,7 @@ namespace DoomTrainer
 				row7DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B83244);
 				row8DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25B4B18);
 				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25B4B28);
+				perfMetrOptionDP = new DeepPointer("DoomEternalx64vk.exe", 0x3D11B20);
 			}
 			else if (moduleSize == 450445312 || moduleSize == 444944384) // BETHESDA VERSION
 			{
@@ -359,6 +375,7 @@ namespace DoomTrainer
 				row7DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B457C4);
 				row8DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25818C0 + 0x98);
 				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25818C0 + 0xA8);
+				perfMetrOptionDP = new DeepPointer("DoomEternalx64vk.exe", 0x3CD4120);
 			}
 			else //UNKNOWN GAME VERSION
 			{
@@ -400,6 +417,8 @@ namespace DoomTrainer
 			row7DP.DerefOffsets(process, out row7ptr);
 			row8DP.DerefOffsets(process, out row8ptr);
 			row9DP.DerefOffsets(process, out row9ptr);
+
+			perfMetrOptionDP.DerefOffsets(process, out perfMetrOptionPtr);
 		}
 
 	}

@@ -10,13 +10,15 @@
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
 		</Grid.ColumnDefinitions>
-		<TextBlock x:Name="PosBlock" HorizontalAlignment="Left" Height="206" Margin="10,12,0,0" TextWrapping="Wrap" Text="PosBlock" VerticalAlignment="Top" Width="119"/>
-		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="258,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click"/>
-		<TextBlock x:Name="VelBlock" HorizontalAlignment="Left" Height="206" Margin="134,12,0,0" TextWrapping="Wrap" Text="VelBlock" VerticalAlignment="Top" Width="119"/>
-		<Label Content="Velocity Behavior" HorizontalAlignment="Left" Height="28" Margin="253,83,0,0" VerticalAlignment="Top" Width="169"/>
-		<CheckBox x:Name="zeroRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="258,111,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" IsChecked="True" Checked="zeroRB_Checked"/>
-		<CheckBox x:Name="retainRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="258,132,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" Checked="retainRB_Checked"/>
-		<Label Content="Set to 0" HorizontalAlignment="Left" Height="21" Margin="279,106,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
-		<Label Content="Use Stored" HorizontalAlignment="Left" Height="21" Margin="279,127,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
+		<TextBlock x:Name="PosBlock" HorizontalAlignment="Left" Height="206" Margin="10,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
+		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="263,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click"/>
+		<TextBlock x:Name="VelBlock" HorizontalAlignment="Left" Height="206" Margin="134,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
+		<Label Content="Velocity Behavior" HorizontalAlignment="Left" Height="28" Margin="258,113,0,0" VerticalAlignment="Top" Width="169"/>
+		<CheckBox x:Name="zeroRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,141,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" IsChecked="True" Checked="zeroRB_Checked"/>
+		<CheckBox x:Name="retainRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,162,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" Checked="retainRB_Checked"/>
+		<Label Content="Set to 0" HorizontalAlignment="Left" Height="21" Margin="284,137,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
+		<Label Content="Use Stored" HorizontalAlignment="Left" Height="21" Margin="284,158,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
+		<CheckBox x:Name="showposCB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,86,0,0" VerticalAlignment="Top" Width="16" IsChecked="True"/>
+		<Label Content="Show readouts in-game" HorizontalAlignment="Left" Height="26" Margin="284,82,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
 	</Grid>
 </Window>
