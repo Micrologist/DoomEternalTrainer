@@ -5,20 +5,22 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoomTrainer"
         mc:Ignorable="d"
-        Title="Doom Eternal Trainer 1.1.5" Height="231.92" Width="464.884" ResizeMode="NoResize">
+        Title="Doom Eternal Trainer 1.1.5" Height="231.92" Width="464.884" ResizeMode="NoResize" Background="#FF3A3A3A" Foreground="#FF292828">
 	<Grid Margin="0,0,2,0">
 		<Grid.ColumnDefinitions>
-			<ColumnDefinition/>
+			<ColumnDefinition Width="55*"/>
+			<ColumnDefinition Width="402*"/>
 		</Grid.ColumnDefinitions>
-		<TextBlock x:Name="PosBlock" HorizontalAlignment="Left" Height="206" Margin="10,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
-		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="263,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click"/>
-		<TextBlock x:Name="VelBlock" HorizontalAlignment="Left" Height="206" Margin="134,12,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="119"/>
-		<Label Content="Velocity Behavior" HorizontalAlignment="Left" Height="28" Margin="258,104,0,0" VerticalAlignment="Top" Width="169"/>
-		<CheckBox x:Name="zeroRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,132,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" IsChecked="True" Checked="zeroRB_Checked"/>
-		<CheckBox x:Name="retainRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,153,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" Checked="retainRB_Checked"/>
-		<Label Content="Set to 0" HorizontalAlignment="Left" Height="21" Margin="284,128,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
-		<Label Content="Use Stored" HorizontalAlignment="Left" Height="21" Margin="284,149,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
-		<CheckBox x:Name="showposCB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="263,75,0,0" VerticalAlignment="Top" Width="16" IsChecked="True"/>
-		<Label Content="Show readouts in-game" HorizontalAlignment="Left" Height="26" Margin="284,71,0,0" VerticalAlignment="Top" Width="145" FontSize="10"/>
+		<TextBlock x:Name="PosBlock" HorizontalAlignment="Left" Height="206" Margin="10,12,0,-15" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Grid.ColumnSpan="2" Foreground="#FFF3F3F3"/>
+		<Button x:Name="unlockButton" Content="Unlock Console Commands" HorizontalAlignment="Left" Height="53" Margin="208.232,12,0,0" VerticalAlignment="Top" Width="171" Click="Button_Click" Grid.Column="1" Background="#FF747474" Foreground="#FFF3F3F3"/>
+		<TextBlock x:Name="VelBlock" HorizontalAlignment="Left" Height="206" Margin="79.232,12,0,-15" TextWrapping="Wrap" VerticalAlignment="Top" Width="119" Grid.Column="1" Foreground="#FFF3F3F3"/>
+		<Label Content="Velocity Behavior" HorizontalAlignment="Left" Height="28" Margin="203.232,104,0,0" VerticalAlignment="Top" Width="169" Grid.Column="1" Foreground="#FFF3F3F3"/>
+		<CheckBox x:Name="zeroRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="208.232,132,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" IsChecked="True" Checked="zeroRB_Checked" Grid.Column="1"/>
+		<CheckBox x:Name="retainRB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="208.232,153,0,0" VerticalAlignment="Top" Width="16" RenderTransformOrigin="-0.203,-0.874" Checked="retainRB_Checked" Grid.Column="1"/>
+		<Label Content="Set to 0" HorizontalAlignment="Left" Height="21" Margin="229.232,128,0,0" VerticalAlignment="Top" Width="145" FontSize="10" Grid.Column="1" Foreground="#FFF3F3F3"/>
+		<Label Content="Use Stored" HorizontalAlignment="Left" Height="21" Margin="229.232,149,0,0" VerticalAlignment="Top" Width="145" FontSize="10" Grid.Column="1" Foreground="#FFF3F3F3"/>
+		<CheckBox x:Name="showposCB" Content="CheckBox" HorizontalAlignment="Left" Height="16" Margin="208.232,75,0,0" VerticalAlignment="Top" Width="16" IsChecked="True" Grid.Column="1"/>
+		<Label Content="Show readouts in-game" HorizontalAlignment="Left" Height="26" Margin="229.232,71,0,0" VerticalAlignment="Top" Width="145" FontSize="10" Grid.Column="1" Foreground="#FFF3F3F3"/>
+
 	</Grid>
 </Window>
