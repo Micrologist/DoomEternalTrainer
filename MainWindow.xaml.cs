@@ -5,6 +5,7 @@ using System.Windows;
 using System.Diagnostics;
 using System.Windows.Forms;
 using System.Text;
+using System.ComponentModel;
 
 namespace DoomTrainer
 {
@@ -18,53 +19,11 @@ namespace DoomTrainer
 		Process process;
 		public bool hooked = false;
 
-		DeepPointer raxDP;
-		DeepPointer eaxDP;
-		DeepPointer velDP;
-		DeepPointer rotDP;
-		DeepPointer yawDP;
-		DeepPointer row1DP;
-		DeepPointer row2DP;
-		DeepPointer row3DP;
-		DeepPointer row4DP;
-		DeepPointer row5DP;
-		DeepPointer row6DP;
-		DeepPointer row7DP;
-		DeepPointer row8DP;
-		DeepPointer row9DP;
-		DeepPointer perfMetrOptionDP;
+		DeepPointer raxDP, eaxDP, velDP, rotDP, yawDP, row1DP, row2DP, row3DP, row4DP, row5DP, row6DP, row7DP, row8DP, row9DP, perfMetrOptionDP;
 
-		IntPtr xLocPtr;
-		IntPtr yLocPtr;
-		IntPtr zLocPtr;
-		IntPtr xVelPtr;
-		IntPtr yVelPtr;
-		IntPtr zVelPtr;
-		IntPtr xRotPtr;
-		IntPtr yRotPtr;
-		IntPtr xYawPtr;
-		IntPtr yYawPtr;
-		IntPtr row1ptr;
-		IntPtr row2ptr;
-		IntPtr row3ptr;
-		IntPtr row4ptr;
-		IntPtr row5ptr;
-		IntPtr row6ptr;
-		IntPtr row7ptr;
-		IntPtr row8ptr;
-		IntPtr row9ptr;
-		IntPtr perfMetrOptionPtr;
+		IntPtr xLocPtr, yLocPtr, zLocPtr, xVelPtr, yVelPtr, zVelPtr, xRotPtr, yRotPtr, xYawPtr, yYawPtr, row1ptr, row2ptr, row3ptr, row4ptr, row5ptr, row6ptr, row7ptr, row8ptr, row9ptr, perfMetrOptionPtr;
 
-		float curX;
-		float curY;
-		float curZ;
-		float curXv;
-		float curYv;
-		float curZv;
-		float curXrot;
-		float curYrot;
-		float curXyaw;
-		float curYyaw;
+		float curX, curY, curZ, curXv, curYv, curZv, curXrot, curYrot, curXyaw, curYyaw;
 		double hVel;
 
 		float[] storedPos = new float[3] { 0f, 0f, 0f };
@@ -73,6 +32,9 @@ namespace DoomTrainer
 
 		bool retainVel;
 		bool enableShowpos = true;
+
+		Timer updateTimer;
+
 
 
 		public MainWindow()
@@ -84,12 +46,18 @@ namespace DoomTrainer
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F6);
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F8);
 
-			Timer timer = new Timer();
-			timer.Interval = (16); // 60 Hz
-			timer.Tick += new EventHandler(updateTick);
-			timer.Start();
+			
+
+
+			updateTimer = new Timer();
+			updateTimer.Interval = (16); // ~60 Hz
+			updateTimer.Tick += new EventHandler(updateTick);
+			updateTimer.Start();
 
 			retainVel = false;
+
+			
+
 
 		}
 
@@ -125,7 +93,7 @@ namespace DoomTrainer
 
 			PosBlock.Text = "Current Position\nX: " + curX.ToString("0.00") + "\nY: " + curY.ToString("0.00") + "\nZ: " + curZ.ToString("0.00") + "\n\n\nStored Position\nX: " + storedPos[0].ToString("0.00") + "\nY: " + storedPos[1].ToString("0.00") + "\nZ: " + storedPos[2].ToString("0.00");
 			VelBlock.Text = "Current Velocity\nX: " + curXv.ToString("0.00") + "\nY: " + curYv.ToString("0.00") + "\nZ: " + curZv.ToString("0.00") + "\n"+hVel.ToString("0.00")+"m/s\n\nStored Velocity\nX: " + storedVel[0].ToString("0.00") + "\nY: " + storedVel[1].ToString("0.00") + "\nZ: " + storedVel[2].ToString("0.00");
-
+			
 			enableShowpos = (showposCB.IsChecked ?? false);
 			if (enableShowpos)
 			{
@@ -135,9 +103,10 @@ namespace DoomTrainer
 			else
 			{
 				process.WriteBytes(perfMetrOptionPtr, new byte[1] { 1 });
-				process.VirtualProtect(row1ptr, 1024, MemPageProtect.PAGE_READWRITE);
+				process.VirtualProtect(row1ptr, 128, MemPageProtect.PAGE_READWRITE);
 				process.WriteBytes(row1ptr, ToByteArray("%i FPS (T)", 30));
 			}
+			
 
 		}
 
@@ -283,23 +252,11 @@ namespace DoomTrainer
 		{
 			process.VirtualProtect(row1ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row1ptr, ToByteArray("%i FPS", 8));
-
-			process.VirtualProtect(row2ptr, 1024, MemPageProtect.PAGE_READWRITE);
-			process.WriteBytes(row2ptr, ToByteArray("hvel: "+hVel.ToString("0.00") + " m/s", 79));
-
-			process.VirtualProtect(row3ptr, 1024, MemPageProtect.PAGE_READWRITE);
-			process.WriteBytes(row3ptr, ToByteArray("zvel: "+curZv.ToString("0.00") + " m/s", 19));
-
-			process.VirtualProtect(row4ptr, 1024, MemPageProtect.PAGE_READWRITE);
+			process.WriteBytes(row2ptr, ToByteArray("h: "+hVel.ToString("0.00") + " m/s", 79));
+			process.WriteBytes(row3ptr, ToByteArray("z: "+curZv.ToString("0.00") + " m/s", 19));
 			process.WriteBytes(row4ptr, ToByteArray("", 7));
-
-			process.VirtualProtect(row5ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row5ptr, ToByteArray("", 34));
-
-			process.VirtualProtect(row8ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row8ptr, ToByteArray("r: "+curXyaw.ToString("0.0") + " " + curYyaw.ToString("0.0"), 34));
-
-			process.VirtualProtect(row9ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row9ptr, ToByteArray("", 34));
 
 			process.VirtualProtect(row6ptr, 1024, MemPageProtect.PAGE_READWRITE);
@@ -307,6 +264,7 @@ namespace DoomTrainer
 
 			process.VirtualProtect(row7ptr, 1024, MemPageProtect.PAGE_READWRITE);
 			process.WriteBytes(row7ptr, ToByteArray("vel: " + curXv.ToString("0.00") + " " + curYv.ToString("0.00") + " " + curZv.ToString("0.00"), 64));
+			
 		}
 
 		public byte[] ToByteArray(string text, int length)
@@ -331,16 +289,26 @@ namespace DoomTrainer
 				return false;
 			}
 			process = processList[0];
+
 			if (process.HasExited)
 				return false;
-			int mainModuleSize = process.MainModule.ModuleMemorySize;
-			SetPointersByModuleSize(mainModuleSize);
-			return true;
+			
+			try
+			{
+				int mainModuleSize = process.MainModule.ModuleMemorySize;
+				SetPointersByModuleSize(mainModuleSize);
+				return true;
+			}
+			catch (Win32Exception ex)
+			{
+				Console.WriteLine(ex.ErrorCode);
+				return false;
+			}
 		}
 
 		public void SetPointersByModuleSize(int moduleSize)
 		{
-			if (moduleSize == 507191296 || moduleSize == 515133440 || moduleSize == 510681088) // STEAM VERSION
+			if (moduleSize == 507191296 || moduleSize == 515133440 || moduleSize == 510681088 || moduleSize == 482037760) // MARCH STEAM VERSION
 			{
 				Debug.WriteLine("Found Steam version");
 				raxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x06121BB8, 0x38, 0x28, 0x0);
@@ -359,7 +327,7 @@ namespace DoomTrainer
 				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25B4B28);
 				perfMetrOptionDP = new DeepPointer("DoomEternalx64vk.exe", 0x3D11B20);
 			}
-			else if (moduleSize == 450445312 || moduleSize == 444944384) // BETHESDA VERSION
+			else if (moduleSize == 450445312 || moduleSize == 444944384) // MARCH BETHESDA VERSION
 			{
 				raxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x060E38B8, 0x38, 0x28, 0x0);
 				eaxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C3F008, 0xCB0, 0xDF8, 0x1D0, 0x88);
@@ -377,9 +345,37 @@ namespace DoomTrainer
 				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25818C0 + 0xA8);
 				perfMetrOptionDP = new DeepPointer("DoomEternalx64vk.exe", 0x3CD4120);
 			}
+			else if (moduleSize == 492113920) //MAY PATCH 1.1 STEAM
+			{
+				raxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x061137B8, 0x38, 0x28, 0x0);
+				
+				eaxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C6E308, 0xCB0, 0xDF8, 0x1D0, 0x88);
+				
+				velDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C6E308, 0x1510, 0x598, 0x1D0, 0x3F40);
+
+				rotDP = new DeepPointer("DOOMEternalx64vk.exe", 0x4C75838);
+
+				yawDP = new DeepPointer("DOOMEternalx64vk.exe", 0x619F478);
+
+
+				row1DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338);
+				row2DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x8);
+				row3DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x58);
+				row4DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x70);
+				row5DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x78);
+				row6DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B754D0);
+				row7DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B74B54);
+				row8DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x98);
+				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0xA8);
+				perfMetrOptionDP = new DeepPointer("DOOMEternalx64vk.exe", 0x3D83420);
+				
+			}
 			else //UNKNOWN GAME VERSION
 			{
+				updateTimer.Stop();
 				System.Windows.Forms.MessageBox.Show("This game version is not supported.", "Unsupported Game Version");
+				Console.WriteLine(moduleSize.ToString());
+				Environment.Exit(0);
 				process = null;
 			}
 		}

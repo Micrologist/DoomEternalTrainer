@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DoomTrainer"
         mc:Ignorable="d"
-        Title="Doom Eternal Trainer" Height="231.92" Width="464.884" ResizeMode="NoResize">
+        Title="Doom Eternal Trainer 1.1.0" Height="231.92" Width="464.884" ResizeMode="NoResize">
 	<Grid Margin="0,0,2,0">
 		<Grid.ColumnDefinitions>
 			<ColumnDefinition/>
