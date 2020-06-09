@@ -35,8 +35,6 @@ namespace DoomTrainer
 
 		Timer updateTimer;
 
-
-
 		public MainWindow()
 		{
 			InitializeComponent();
@@ -46,19 +44,12 @@ namespace DoomTrainer
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F6);
 			hook.HookedKeys.Add(System.Windows.Forms.Keys.F8);
 
-			
-
-
 			updateTimer = new Timer();
 			updateTimer.Interval = (16); // ~60 Hz
 			updateTimer.Tick += new EventHandler(updateTick);
 			updateTimer.Start();
 
 			retainVel = false;
-
-			
-
-
 		}
 
 		public void updateTick(object snder, EventArgs e){
@@ -77,7 +68,6 @@ namespace DoomTrainer
 
 			DerefPointers();
 
-			
 			process.ReadValue<float>(xLocPtr, out curX);
 			process.ReadValue<float>(yLocPtr, out curY);
 			process.ReadValue<float>(zLocPtr, out curZ);
@@ -106,10 +96,7 @@ namespace DoomTrainer
 				process.VirtualProtect(row1ptr, 128, MemPageProtect.PAGE_READWRITE);
 				process.WriteBytes(row1ptr, ToByteArray("%i FPS (T)", 30));
 			}
-			
-
 		}
-
 
 		private void Hook_KeyUp(object sender, System.Windows.Forms.KeyEventArgs e)
 		{
@@ -137,8 +124,6 @@ namespace DoomTrainer
 
 				if (e.KeyCode == System.Windows.Forms.Keys.F6)
 				{
-					
-
 					float curxYaw;
 					float curxRot;
 					process.ReadValue<float>(xYawPtr, out curxYaw);
@@ -187,15 +172,10 @@ namespace DoomTrainer
 					Console.WriteLine("Velocity Pointer: " + xVelPtr.ToString("X16"));
 					Console.WriteLine("Camera Rotation Pointer: " + xRotPtr.ToString("X16"));
 					Console.WriteLine("Yaw Pointer: " + xYawPtr.ToString("X16"));
-
 				}
-
 			}
 			e.Handled = true;
 		}
-
-
-
 
 		private void Button_Click(object sender, RoutedEventArgs e)
 		{
@@ -203,7 +183,6 @@ namespace DoomTrainer
 			SigScanTarget consoleBindScanTarget = new SigScanTarget("4C8B0FBA01000000488BCF448BF041FF51??4C6BC507");
 			IntPtr restrictedCommandsPtr;
 			IntPtr restrictedKeyPressPtr;
-
 			unlockButton.IsEnabled = false;
 			if (!hooked)
 			{
@@ -348,16 +327,10 @@ namespace DoomTrainer
 			else if (moduleSize == 492113920) //MAY PATCH 1.1 STEAM
 			{
 				raxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x061137B8, 0x38, 0x28, 0x0);
-				
 				eaxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C6E308, 0xCB0, 0xDF8, 0x1D0, 0x88);
-				
 				velDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C6E308, 0x1510, 0x598, 0x1D0, 0x3F40);
-
 				rotDP = new DeepPointer("DOOMEternalx64vk.exe", 0x4C75838);
-
 				yawDP = new DeepPointer("DOOMEternalx64vk.exe", 0x619F478);
-
-
 				row1DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338);
 				row2DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x8);
 				row3DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x58);
@@ -368,7 +341,27 @@ namespace DoomTrainer
 				row8DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0x98);
 				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x2608338 + 0xA8);
 				perfMetrOptionDP = new DeepPointer("DOOMEternalx64vk.exe", 0x3D83420);
-				
+			}
+			else if (moduleSize == 457285632) //MAY PATCH 1.1 BETHESDA
+			{
+				raxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x060D5438, 0x38, 0x28, 0x0);
+				eaxDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C30888, 0xCB0, 0xDF8, 0x1D0, 0x88);
+
+				velDP = new DeepPointer("DOOMEternalx64vk.exe", 0x04C30888, 0x1510, 0x598, 0x1D0, 0x3F40);
+
+				rotDP = new DeepPointer("DOOMEternalx64vk.exe", 0x4C37DB8);
+				yawDP = new DeepPointer("DOOMEternalx64vk.exe", 0x6160FC8);
+
+				row1DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178);
+				row2DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0x8);
+				row3DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0x58);
+				row4DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0x70);
+				row5DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0x78);
+				row6DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B379D0);
+				row7DP = new DeepPointer("DOOMEternalx64vk.exe", 0x5B37054);
+				row8DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0x98);
+				row9DP = new DeepPointer("DOOMEternalx64vk.exe", 0x25D5178 + 0xA8);
+				perfMetrOptionDP = new DeepPointer("DOOMEternalx64vk.exe", 0x3D459A0);
 			}
 			else //UNKNOWN GAME VERSION
 			{
@@ -416,9 +409,5 @@ namespace DoomTrainer
 
 			perfMetrOptionDP.DerefOffsets(process, out perfMetrOptionPtr);
 		}
-
 	}
 }
-
-
-

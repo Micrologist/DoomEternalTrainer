@@ -1,6 +1,6 @@
 # Doom-Eternal-Trainer
 ## Description
-Currently compatible with 1.0 and patch 1.1 steam version and 1.0 bethesda.
+Compatible with the release versions and patch 1.1 (steam and bethesda).
 
 To download, scroll down and click "download latest release"
 
